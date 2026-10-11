@@ -1,0 +1,21 @@
+name: Repository Report
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Generate report
+        run: |
+          echo "## Repository Report" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Files: $(find . -type f | wc -l)" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Lines of code: $(find . -type f -name '*.py' -o -name '*.js' -o -name '*.ts' | xargs cat 2>/dev/null | wc -l)" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Latest commit: $(git log -1 --pretty='%h %s')" >> "$GITHUB_STEP_SUMMARY"

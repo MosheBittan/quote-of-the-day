@@ -1,0 +1,21 @@
+name: Display Quote
+
+on:
+  workflow_dispatch:
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+        
+      - uses: actions/setup-python@v7
+        with:
+            python-version: "3.13"
+
+      - name: Generate report
+        run: |
+          pip install -r requirements.txt
+          echo "> $(python quotes_test.py)" >> "$GITHUB_STEP_SUMMARY"
+          echo "> $(python quotes.py)" >> "$GITHUB_STEP_SUMMARY"

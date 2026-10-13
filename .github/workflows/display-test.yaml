@@ -15,10 +15,7 @@ jobs:
             python-version: "3.13"
 
       - name: install dependencies
-        run: |
-          pip install -r requirements.txt
-          echo "> $(python quotes_test.py)" >> "$GITHUB_STEP_SUMMARY"
-          echo "> $(python quotes.py)" >> "$GITHUB_STEP_SUMMARY"
+        run: pip install -r requirements.txt
 
       - name: run tests
         run: python -m pytest.py

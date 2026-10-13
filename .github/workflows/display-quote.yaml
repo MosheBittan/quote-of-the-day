@@ -1,0 +1,19 @@
+name: Repository Report
+
+on:
+  workflow_dispatch:
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+        
+      - uses: actions/setup-python@v7
+        with:
+            python-version: "3.13"
+
+      - name: Generate report
+        run: |
+          echo "> $(python quotes.py)" >> "$GITHUB_STEP_SUMMARY"

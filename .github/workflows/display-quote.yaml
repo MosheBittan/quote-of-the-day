@@ -1,4 +1,4 @@
-name: Repository Report
+name: Display Quote
 
 on:
   workflow_dispatch:

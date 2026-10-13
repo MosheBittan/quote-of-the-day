@@ -14,8 +14,11 @@ jobs:
         with:
             python-version: "3.13"
 
-      - name: Generate report - display test
+      - name: install dependencies
         run: |
           pip install -r requirements.txt
           echo "> $(python quotes_test.py)" >> "$GITHUB_STEP_SUMMARY"
           echo "> $(python quotes.py)" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: run tests
+        run: python -m pytest.py

@@ -14,7 +14,7 @@ jobs:
         with:
             python-version: "3.13"
 
-      - name: Generate report
+      - name: Generate report - display test
         run: |
           pip install -r requirements.txt
           echo "> $(python quotes_test.py)" >> "$GITHUB_STEP_SUMMARY"

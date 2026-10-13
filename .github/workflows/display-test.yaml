@@ -18,5 +18,5 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: run tests
-        run: python -m pytest.py
+        run: python -m pytest
         # alert
